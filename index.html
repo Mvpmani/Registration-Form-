@@ -10,377 +10,303 @@
     <link href="https://fonts.googleapis.com/css?family=Exo:400,700" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins",sans-serif;
-  }
-  
-  body {
-    font-family: 'Exo', sans-serif;
-    color: #333;
-    background: linear-gradient(to right, #969696,#2E5461);
-    display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: 'Exo', sans-serif;
+  color: #333;
+  background: linear-gradient(to right, #969696, #2E5461);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 100px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #4e54c8, #707072);
+}
+
+/* Header */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #24323d;
+  padding: 14px 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-container {
+  display: flex;
     flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding-top: 100px;
-    overflow-y: auto;
-    position: relative;
-  }
-  
-  .area {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -2;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(135deg, #4e54c8, #707072);
-  }
-  
- 
+    justify-content: center;
+    text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
 
-  
-  /* Header */
-  header {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background:#24323d;
-    padding: 14px 0;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .header-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-    position: relative;
-  }
-  
-  
+.header-logo {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  flex: 1;
+}
+
+/* Inputs */
+input.form-control::-webkit-input-placeholder {
+  color: #24323d;
+}
+input.form-control:-ms-input-placeholder {
+  color: #24323d;
+}
+input.form-control::-ms-input-placeholder {
+  color: #24323d;
+}
+input.form-control::placeholder {
+  color: #24323d;
+}
+
+/* Form Container */
+.container {
+  background: #24323d;
+  backdrop-filter: blur(8px);
+  color: #1ab188;
+  font-weight: 600;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  margin: 30px auto 100px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Inputs & Buttons */
+.form-control {
+  border: 1px solid #ccc;
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: #24323d;
+  transition: box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 2px rgba(5, 67, 148, 0.2);
+}
+
+#registrationForm label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #1ab188;
+}
+
+#registrationForm .form-control,
+#registrationForm select,
+#registrationForm textarea {
+  width: 100%;
+}
+
+.btn-success {
+  background-color: #1ab188;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-success:hover {
+  background-color: #1ec79a;
+  transform: scale(1.05);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+
   .header-logo {
-    height: 45px;
-    width: auto;
-    position: absolute;
-    left: 15px;
-    object-fit: contain;
+    height: 40px;
+    margin-bottom: 8px;
   }
-  
+
   .header-title {
-    font-size: 18px;
-    font-weight: 500;
-    color: white;
-    width: 100%;
-    text-align: center;
-    padding-left: 35px;
-  }
-  input.form-control::-webkit-input-placeholder {
-        color: #24323d; /* Chrome, Safari, Edge */
-    }
-
-    input.form-control:-ms-input-placeholder {
-        color: #24323d; /* Internet Explorer */
-    }
-
-    input.form-control::-ms-input-placeholder {
-        color: #24323d; /* Microsoft Edge */
-    }
-
-    input.form-control::placeholder {
-        color: #24323d; /* Standard */
-    }
-
-   
-  /* Form Container */
-  .container {
-    background: #24323d;
-    backdrop-filter: blur(8px);
-    color: #1ab188;
-    font-weight: 600px;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-    z-index: 10;
-    margin: 30px auto 100px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-  }
-  
-  /* Inputs & Buttons */
-
-  
-  .form-control {
-    border: 1px solid #ccc;
-    position: relative;
-    width: 100%;
-    padding: 10px 10px 10px 10px;
-    outline:none;
-    border:none;
-    border-radius: 10px;
-
-
-    color:#24323d;
-    transition: box-shadow 0.2s ease;
-  }
-  
-  .form-control:focus {
-    box-shadow: 0 0 0 2px rgba(5, 67, 148, 0.2);
-  }
-  
-  .btn-success {
-    background-color: #1ab188;
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 10px;
-    color: #fff;
     font-size: 16px;
-    transform:0.3s ease;
-    cursor: pointer;;    
-    transition: all 0.3s ease-in-out;
   }
-  
-  .btn-success:hover {
-    background-color: #1ec79a;
-    transform: scale(1.05);
-  
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 14px;
   }
-  
-  /* Responsive tweaks */
-  @media (max-width: 768px) {
-    .header-logo { height: 35px; }
-    .header-title { font-size: 16px; margin-left: 40px; }
+
+  .header-logo {
+    height: 36px;
   }
-  
-  @media (max-width: 580px) {
-    .header-logo { display: none; }
-    .header-title { margin-left: 0; text-align: center; }
+
+  body {
+    padding-top: 110px;
   }
-  
-  @media (max-width: 480px) {
-    .header-title { font-size: 14px; }
-    body { padding-top: 110px; }
-  }
-  
-    </style>
+}
+</style>
+
 </head>
 
 <body>
    
     <header>
-        <div class="header-container"> <img src="https://i.ibb.co/CpZ0F5dk/Cetas-Logo-White.png" alt="Cetas Logo"
-                class="header-logo">
-            <div class="header-title">Cetas Walk-in Interview Registration</div>
-        </div>
-    </header>
+    <div class="header-container">
+        <img src="https://i.ibb.co/CpZ0F5dk/Cetas-Logo-White.png" alt="Cetas Logo" class="header-logo" />
+        <div class="header-title">Cetas Walk-in Interview Registration</div>
+    </div>
+</header>
+
     <div class="container" id="form-container">
         <h2 class="mb-4">Register</h2>
-        <form id="registrationForm" >
-            
-            <div class="input-group mb-3">
-               
-                <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full Name" required>
-            </div>
-            <div id="fullname-error" class="text-danger"></div>
-            <div class="input-group mb-3">
-                
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-            </div>
-            <div id="email-error" class="text-danger"></div>
-            <div class="input-group mb-3">
-               
-                <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" required>
-            </div>
-            <div class="input-group mb-3">
-                <input type="date" class="form-control" name="dob" id="dob" placeholder="DOB" required>
-            </div>
-            <div class="input-group mb-3"> 
-                <select class="form-control" name="Gender" id="Gender" required>
-                    <option value="" disabled selected>Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-            </div>
-            <div class="input-group mb-3"> 
-                <select class="form-control" name="MaritalStatus" id="MaritalStatus" required>
-                    <option value="" disabled selected>Marital Status</option>
-                    <option value="Single">Single</option>
-                    <option value="Married">Married</option>
-                </select>
-            </div>
-            <div class="input-group mb-3">  <input
-                    type="text" class="form-control" name="college" id="college" placeholder="College Name" required>
-            </div>
-            <div class="input-group mb-3"> <select
-                    class="form-control" name="education" id="education" required>
-                    <option value="" disabled selected>Educational Qualification</option>
-                    <option value="Undergraduate">Undergraduate</option>
-                    <option value="Postgraduate">Postgraduate</option>
-                    <option value="Doctorate">Doctorate</option>
-                    <option value="In College">In College</option>
-                </select> </div>
-            <div class="input-group mb-3">  
-                <input type="text" class="form-control" name="Specialization" id="Specialization" placeholder="Enter your Specialization" required>
-            </div>
-               
-           
-            <div class="input-group mb-3"> 
-                <select class="form-control" name="YOP" id="YOP" required>
-                    <option value="" disabled selected>Year Of Passing</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                    <option value="<2020"><2020</option>
-                </select>
-            </div>
-            <div class="input-group mb-3"> <select class="form-control"
-                    name="FresherOrExperience" id="FresherOrExperience" required>
-                    <option value="" disabled selected>Fresher or Experienced</option>
-                    <option value="Fresher">Fresher</option>
-                    <option value="Experience">Experience</option>
-                </select> </div>
-                <div class="input-group mb-3 same-domain-field" style="display: none;">
-                    
-                    <select class="form-control" name="SameDomainExperience" id="SameDomainExperience">
-                        <option value="" disabled selected>Experienced in Same Domain?</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-                <!-- Add this after the existing experienced fields -->
-                <div class="input-group mb-3 exclude-for-freshers" style="display: none;">
-                    <textarea
-                        class="form-control"
-                        name="WorkExperienceDetails"
-                        id="WorkExperienceDetails"
-                        placeholder="Mention your work experience in detail"
-                        rows="3"
-                    ></textarea>
-                </div>
-                <div class="input-group mb-3 exclude-for-freshers" style="display: none;">
-                    <select class="form-control" name="OtherOfferInHand" id="OtherOfferInHand">
-                        <option value="" disabled selected>Do you have any other offer in hand?</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-                <div class="input-group mb-3 offer-details-field" style="display: none;">
-                    <textarea
-                        class="form-control"
-                        name="CompanyOfferDetails"
-                        id="CompanyOfferDetails"
-                        placeholder="Mention company and offer details"
-                        rows="3"
-                    ></textarea>
-                </div>
+       <!-- START: Registration Form -->
+<form id="registrationForm">
+  <!-- Full Name -->
+  <div class="input-group mb-3">
+    <label for="fullname">Full Name</label>
+    <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full Name" required>
+  </div>
+  <div id="fullname-error" class="text-danger"></div>
 
+  <!-- Email -->
+  <div class="input-group mb-3">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+  </div>
+  <div id="email-error" class="text-danger"></div>
 
-                <div class="input-group mb-3 only-for-freshers" style="display: none;">
-                    
-                    <select class="form-control" name="JoinImmediately" id="JoinImmediately" required>
-                        <option value="" disabled selected>If Fresher, would you like to join Immediately</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-                <div class="input-group mb-3 reason-for-not-joining" style="display: none;">
-                   
-                    <select class="form-control" name="ReasonNotJoining" id="ReasonNotJoining" required>
-                        <option value="" disabled selected>Select a reason</option>
-                        <option value="Personal Reasons or family commitments">Personal Reasons or family commitments</option>
-                        <option value="Academinc Commitments">Academinc Commitments(for freshers)</option>
-                        <option value="Relocation Requirements">Relocation Requirements</option>
-                        <option value="Waiting for final semester results">Waiting for final semester results</option>
-                        <option value="Pending offer negotations">Pending offer negotations</option>
-                        <option value="Serving notice period at current organization">Serving notice period at current organization</option>
-                        <option value="For any other, Contact HR to discuss">For any other, Contact HR to discuss</option>
-                    </select>
-                </div>
-                <div class="input-group mb-3 notice-period-fields" style="display: none;">
-                    <input
-                        type="text"
-                        class="form-control"
-                        name="NoticePeriodDuration"
-                        id="NoticePeriodDuration"
-                        placeholder="What is your notice period?"
-                    >
-                </div>
-                <div class="input-group mb-3 notice-period-fields" style="display: none;">
-                    <input
-                        type="date"
-                        class="form-control"
-                        name="LastWorkingDate"
-                        id="LastWorkingDate"
-                        placeholder="When is your last working date?"
-                    >
-                </div>
-            <div class="input-group mb-3 exclude-for-freshers" >  <input type="number" class="form-control"
-                    name="TotalExperience" id="TotalExperience" placeholder="Over all Experience" min="0" max="50"
-                    step="0.1"> </div>
-            <div class="input-group mb-3 exclude-for-freshers">  <input type="number" class="form-control"
-                    name="RelevantExperience" id="RelevantExperience" placeholder="Relevant Experience" min="0" max="50"
-                    step="0.1"> </div>
-            <div class="input-group mb-3 exclude-for-freshers"> <input type="number" class="form-control"
-                    name="DomainExperience" id="DomainExperience" placeholder="Other Domain Experience" min="0" max="50"
-                    step="0.1"> </div>
-            <div class="input-group mb-3 "> <select class="form-control"
-                    name="FunctionalOrTechnical" id="FunctionalOrTechnical" required>
-                    <option value="" disabled selected>Expertise Functional or Technical</option>
-                    <option value="Functional">Functional</option>
-                    <option value="Technical">Technical</option>
-                    <option value="Techno-Functional">Techno-Functional</option>
-                </select> </div>
-            <div class="input-group mb-3 exclude-for-freshers"> <input type="number" class="form-control" name="CurrentCTC"
-                    id="CurrentCTC" placeholder="Current CTC in Lakhs" min="0" step="0.1" max="100"> </div>
-            <div class="input-group mb-3 exclude-for-freshers"> <input
-                    type="number" class="form-control" name="ExpectedCTC" id="ExpectedCTC"
-                    placeholder="Expected CTC in Lakhs" min="0" step="0.1" max="100"> </div>
-            <div class="input-group mb-3 exclude-for-freshers"><select class="form-control"
-                    name="JoinerOrNotice" id="JoinerOrNotice">
-                    <option value="" disabled selected>Immediate Joiner or Notice Period </option>
-                    <option value="Immediate Joiner">Immediate Joiner</option>
-                    <option value="Notice Period">Notice Period</option>
-                </select> </div>
-            <div class="input-group mb-3 exclude-for-freshers">  <input type="text" class="form-control"
-                    name="NoOfDaysNotice" id="NoOfDaysNotice" placeholder="Notice Period No of days/No of months">
-            </div>
-            <div class="input-group mb-3 exclude-for-freshers"> <input
-                    type="date" class="form-control" name="ServingDate" id="ServingDate"
-                    placeholder="Notice Period Serving Last Date" onfocus="(this.type='date')"
-                    onblur="(this.type='text')"> </div>
-            <div class="input-group mb-3"> <select class="form-control" name="KnownCetas"
-                    id="KnownCetas" required>
-                    <option value="" disabled selected>How did you know us</option>
-                    <option value="Cetas Website">Cetas Website</option>
-                    <option value="LinkedIn">LinkedIn </option>
-                    <option value="Friends">Friends</option>
-                    <option value="Employee of Cetas">Refer by Cetas Employee</option>
-                    <option value="Consultancy or Institute">Consultancy/Institute</option>
-                    <option value="Walk-in">Walk-in</option>
-                </select> </div>
-            <div class="input-group mb-3">  <input
-                    type="text" class="form-control" name="CertificateNo" id="CertificateNo"
-                    placeholder="SSLC Certificate No" required></div>
-            <div class="input-group mb-3">
-                        <input type="date" class="form-control" name="ApproxDate" id="ApproxDate" placeholder="Approximate date to join in cetas " required>
-                    </div>        
-            <div class="input-group mb-3"> <input
-                    type="file" class="form-control" name="resume" id="resume" accept=".pdf,.doc,.docx" required> </div> <button
-                type="submit" class="btn btn-success w-100" name="submitBtn" id="submitBtn">Submit</button>
-        </form>
+  <!-- Phone -->
+  <div class="input-group mb-3">
+    <label for="phone">Phone</label>
+    <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" required>
+  </div>
+
+  <!-- Date of Birth -->
+  <div class="input-group mb-3">
+    <label for="dob">Date of Birth</label>
+    <input type="date" class="form-control" name="dob" id="dob" required>
+  </div>
+
+  <!-- Gender -->
+  <div class="input-group mb-3">
+    <label for="Gender">Gender</label>
+    <select class="form-control" name="Gender" id="Gender" required>
+      <option value="" disabled selected>Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  </div>
+
+  <!-- Marital Status -->
+  <div class="input-group mb-3">
+    <label for="MaritalStatus">Marital Status</label>
+    <select class="form-control" name="MaritalStatus" id="MaritalStatus" required>
+      <option value="" disabled selected>Marital Status</option>
+      <option value="Single">Single</option>
+      <option value="Married">Married</option>
+    </select>
+  </div>
+
+  <!-- College Name -->
+  <div class="input-group mb-3">
+    <label for="college">College Name</label>
+    <input type="text" class="form-control" name="college" id="college" placeholder="College Name" required>
+  </div>
+
+  <!-- Education -->
+  <div class="input-group mb-3">
+    <label for="education">Educational Qualification</label>
+    <select class="form-control" name="education" id="education" required>
+      <option value="" disabled selected>Educational Qualification</option>
+      <option value="Undergraduate">Undergraduate</option>
+      <option value="Postgraduate">Postgraduate</option>
+      <option value="Doctorate">Doctorate</option>
+      <option value="In College">In College</option>
+    </select>
+  </div>
+
+  <!-- Specialization -->
+  <div class="input-group mb-3">
+    <label for="Specialization">Specialization</label>
+    <input type="text" class="form-control" name="Specialization" id="Specialization" placeholder="Enter your Specialization" required>
+  </div>
+
+  <!-- Year of Passing -->
+  <div class="input-group mb-3">
+    <label for="YOP">Year Of Passing</label>
+    <select class="form-control" name="YOP" id="YOP" required>
+      <option value="" disabled selected>Year Of Passing</option>
+      <option value="2025">2025</option>
+      <option value="2024">2024</option>
+      <option value="2023">2023</option>
+      <option value="2022">2022</option>
+      <option value="2021">2021</option>
+      <option value="<2020"><2020</option>
+    </select>
+  </div>
+
+  <!-- Fresher or Experienced -->
+  <div class="input-group mb-3">
+    <label for="FresherOrExperience">Fresher or Experienced</label>
+    <select class="form-control" name="FresherOrExperience" id="FresherOrExperience" required>
+      <option value="" disabled selected>Fresher or Experienced</option>
+      <option value="Fresher">Fresher</option>
+      <option value="Experience">Experience</option>
+    </select>
+  </div>
+
+  <!-- The rest of the fields follow same structure... -->
+
+  <!-- Upload Resume -->
+  <div class="input-group mb-3">
+    <label for="resume">Upload Resume</label>
+    <input type="file" class="form-control" name="resume" id="resume" accept=".pdf,.doc,.docx" required>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-success w-100" name="submitBtn" id="submitBtn">Submit</button>
+</form>
+<!-- END: Registration Form -->
+
         <div id="alert-container" class="mt-3"></div>
     </div>
     <script >
