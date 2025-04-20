@@ -54,8 +54,10 @@ header {
 
 .header-container {
   display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
   align-items: center;
-  justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
   max-width: 1200px;
@@ -157,11 +159,6 @@ input.form-control::placeholder {
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
 
   .header-logo {
     height: 40px;
